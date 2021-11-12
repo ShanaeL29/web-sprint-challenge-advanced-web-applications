@@ -3,12 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-const initialErrors = {
-  credentials: {
-    username: "",
-    password: "",
-  },
-};
+const initialError = "";
 
 const Login = (props) => {
   const history = useHistory();
@@ -19,7 +14,7 @@ const Login = (props) => {
     },
   });
 
-  const [error, setError] = useState(initialErrors);
+  const [error, setError] = useState(initialError);
 
   const handleChange = (e) => {
     setState({
@@ -40,7 +35,7 @@ const Login = (props) => {
       })
       .catch((err) => {
         console.log(err.response.data);
-        // setError(err.response.data);
+        setError(err.response.data);
       });
   };
 
@@ -69,7 +64,7 @@ const Login = (props) => {
         />
         <button id="submit">Log in</button>
 
-        <p id="error">Errors to show here</p>
+        {error && <p id="error">Incorrect username / password combination.</p>}
       </FormGroup>
     </ComponentContainer>
   );
