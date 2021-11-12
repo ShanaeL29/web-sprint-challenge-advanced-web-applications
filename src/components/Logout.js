@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { Redirect } from "react-router";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-const Logout = () => {        
-    return(<div></div>);
-}
+const Logout = () => {
+  useEffect(() => {
+    axiosWithAuth()
+      .post("/logout")
+      .then((res) => {
+        console.log(res);
+        localStorage.removeItem("token");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  return (
+    <div>
+      <Redirect to="/login" />
+    </div>
+  );
+};
 
 export default Logout;
 
