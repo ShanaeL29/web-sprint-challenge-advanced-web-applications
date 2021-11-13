@@ -6,7 +6,7 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import Article from "./Article";
 import EditForm from "./EditForm";
 
-const View = (props) => {
+const View = () => {
   const [articles, setArticles] = useState([]);
   const [editing, setEditing] = useState(false);
   const [editId, setEditId] = useState();
