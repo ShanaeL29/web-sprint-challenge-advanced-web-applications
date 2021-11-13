@@ -34,7 +34,6 @@ const Login = (props) => {
         history.push("/view");
       })
       .catch((err) => {
-        console.log(err.response.data);
         setError(err.response.data);
       });
   };

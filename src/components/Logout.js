@@ -7,7 +7,6 @@ const Logout = () => {
     axiosWithAuth()
       .post("/logout")
       .then((res) => {
-        console.log(res);
         localStorage.removeItem("token");
       })
       .catch((err) => {
